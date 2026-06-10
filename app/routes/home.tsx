@@ -75,7 +75,11 @@ export default function HomePage() {
               visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
-            <p className="text-6xl mb-6" aria-hidden="true">♻️</p>
+            <img
+              src="/whatsapp-icon.jpeg"
+              alt="WhatsApp icon"
+              className="mx-auto mb-6 h-20 w-20 rounded-full border border-white/30 bg-white"
+            />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               Reduce. Reuse. Recycle.
               <br />
@@ -115,15 +119,19 @@ export default function HomePage() {
               Responsible Consumption &amp; Production — the numbers tell the story.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          <div className="space-y-4 max-w-3xl mx-auto">
             {STATS.map((stat) => (
               <div
                 key={stat.value}
-                className="bg-white rounded-2xl shadow-md p-6 text-center border border-gray-100"
+                className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm"
               >
-                <p className="text-4xl mb-3" aria-hidden="true">{stat.emoji}</p>
-                <p className="text-3xl font-bold text-[#27667B] mb-2">{stat.value}</p>
-                <p className="text-sm text-gray-600 leading-relaxed">{stat.label}</p>
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#DDEB9D] text-3xl">
+                  {stat.emoji}
+                </div>
+                <div className="text-left">
+                  <p className="text-3xl font-bold text-[#27667B]">{stat.value}</p>
+                  <p className="text-sm text-gray-600 leading-relaxed">{stat.label}</p>
+                </div>
               </div>
             ))}
           </div>

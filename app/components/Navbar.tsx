@@ -21,7 +21,11 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
-            <span aria-hidden="true">♻️</span>
+            <img
+              src="/whatsapp-icon.jpeg"
+              alt="WhatsApp logo"
+              className="h-8 w-8 rounded-full border border-white/30 bg-white"
+            />
             <span>ReLoop</span>
           </Link>
 

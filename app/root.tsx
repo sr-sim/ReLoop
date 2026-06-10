@@ -14,6 +14,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 export const links: Route.LinksFunction = () => [
+  { rel: "icon", href: "/whatsapp-icon.jpeg", type: "image/jpeg" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
