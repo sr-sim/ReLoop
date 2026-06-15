@@ -48,7 +48,6 @@ export default function GiveawayMarketplacePage() {
     itemId: string;
     name: string;
     email: string;
-    phone: string;
     role: "donor" | "requester";
   } | null>(null);
   type Message = { from: "me" | "them"; text: string; time: string };
@@ -83,7 +82,7 @@ export default function GiveawayMarketplacePage() {
     }
   };
 
-  function openContact(itemId: string, person: { itemId: string; name: string; email: string; phone: string; role: "donor" | "requester" }) {
+  function openContact(itemId: string, person: { itemId: string; name: string; email: string; role: "donor" | "requester" }) {
     setContactFor(person);
     setContactOpen(true);
     // seed a demo thread if missing
@@ -298,7 +297,7 @@ export default function GiveawayMarketplacePage() {
             <div className="flex items-center justify-between px-5 py-3 border-b border-gray-100">
               <div>
                 <div className="text-sm font-semibold text-[#143D60]">Contact: {contactFor.name}</div>
-                <div className="text-xs text-gray-500">{contactFor.email} · {contactFor.phone}</div>
+                <div className="text-xs text-gray-500">{contactFor.email}</div>
               </div>
               <button onClick={() => setContactOpen(false)} className="text-gray-400 hover:text-gray-600 text-xl">×</button>
             </div>
@@ -427,14 +426,14 @@ export default function GiveawayMarketplacePage() {
                       <div className="mt-3 px-4">
                         <div className="text-sm text-gray-600 mb-2">Requests for this item</div>
                         {/* Dummy requester list (one or two entries) */}
-                        {[{ name: "Alex Lim", email: "alex.lim@example.edu", phone: "555-0110" }, { name: "Maya Chen", email: "maya.chen@example.edu", phone: "555-0123" }].map((r, idx) => (
+                        {[{ name: "Alex Lim", email: "alex.lim@example.edu" }, { name: "Maya Chen", email: "maya.chen@example.edu" }].map((r, idx) => (
                           <div key={idx} className="flex items-center justify-between gap-3 mb-2 bg-white border rounded-lg px-3 py-2">
                             <div>
                               <div className="text-sm font-medium text-gray-700">{r.name}</div>
                               <div className="text-xs text-gray-500">{r.email}</div>
                             </div>
                             <div className="flex gap-2">
-                              <button onClick={() => openContact(item.id, { itemId: item.id, name: r.name, email: r.email, phone: r.phone, role: "requester" })} className="rounded-lg bg-[#27667B] text-white px-3 py-1 text-sm">Contact</button>
+                              <button onClick={() => openContact(item.id, { itemId: item.id, name: r.name, email: r.email, role: "requester" })} className="rounded-lg bg-[#27667B] text-white px-3 py-1 text-sm">Contact</button>
                             </div>
                           </div>
                         ))}
@@ -463,11 +462,10 @@ export default function GiveawayMarketplacePage() {
                     <div className="mt-3 px-4">
                       <div className="flex items-center justify-end gap-2">
                         <button
-                          onClick={() => {
+                            onClick={() => {
                             const donor = item.donorName || "Donor";
                             const email = `${donor.toLowerCase().replace(/\s+/g, "")}@example.edu`;
-                            const phone = "555-0102";
-                            openContact(item.id, { itemId: item.id, name: donor, email, phone, role: "donor" });
+                            openContact(item.id, { itemId: item.id, name: donor, email, role: "donor" });
                           }}
                           className="rounded-lg bg-[#27667B] text-white px-3 py-1 text-sm"
                         >
