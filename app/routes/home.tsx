@@ -156,7 +156,7 @@ export default function HomePage() {
               <Link
                 key={card.path}
                 to={card.path}
-                className={`group w-full max-w-sm rounded-2xl bg-gradient-to-br ${card.gradient} p-6 shadow-md border border-white/50 block card-enhance card-glow transition-transform duration-300 transform hover:-translate-y-2 hover:scale-105`}
+                className={`group w-full max-w-sm rounded-2xl bg-gradient-to-br ${card.gradient} p-6 shadow-md border border-white/50 block card-enhance card-glow transition-transform duration-300 transform hover:-translate-y-2 hover:scale-105 mx-auto`}
               >
                 <p className="text-4xl mb-4 transform transition-transform duration-300 group-hover:scale-110" aria-hidden="true">{card.icon}</p>
                 <h3 className="text-lg font-bold text-[#143D60] mb-2 transition-colors group-hover:text-[#27667B]">

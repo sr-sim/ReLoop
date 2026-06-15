@@ -82,7 +82,7 @@ export default function InspirationHubPage() {
         </button>
       </section>
 
-      {/* Top-level tab switcher + Filter Bar */}
+      {/* Top-level tab switcher */}
       <div className="bg-white border-b border-gray-200 sticky top-16 z-40">
         <div className="mx-auto max-w-6xl px-4 py-2 flex items-center gap-3">
           <button
@@ -102,27 +102,28 @@ export default function InspirationHubPage() {
               </span>
             )}
           </button>
-
-          <div className="ml-auto flex items-center gap-3">
-            <span className="text-sm font-medium text-gray-500 mr-2 hidden sm:inline">Filter:</span>
-            <div className="flex flex-wrap gap-2 items-center">
-              {FILTER_OPTIONS.map((filter) => (
-                <button
-                  key={filter}
-                  onClick={() => setActiveFilter(filter)}
-                  className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
-                    activeFilter === filter
-                      ? "bg-[#27667B] text-white"
-                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                  }`}
-                >
-                  {filter}
-                </button>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
+
+      {/* Category filter (placed below tabs, like Giveaway) */}
+      {tabView === "browse" && (
+        <div className="bg-white border-b border-gray-100">
+          <div className="mx-auto max-w-6xl px-4 py-2.5 flex flex-wrap gap-2 items-center">
+            <span className="text-sm font-medium text-gray-500 mr-1">Filter:</span>
+            {FILTER_OPTIONS.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+                  activeFilter === filter ? "bg-[#A0C878] text-[#143D60]" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Success toast */}
       {successMsg && (
