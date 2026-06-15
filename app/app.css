@@ -73,3 +73,7 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .animate-slideUpFade, .animate-fadeInScale, .animate-floaty, .bg-gradient-animated { animation: none !important; }
 }
+
+/* Scroll reveal utilities */
+.reveal-hidden { opacity: 0; transform: translateY(12px); }
+.reveal-visible { animation: fadeInScale 420ms cubic-bezier(.2,.9,.2,1) both; }

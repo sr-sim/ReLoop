@@ -65,6 +65,30 @@ export default function HomePage() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    // Reveal elements as they scroll into view
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            // apply delay if provided
+            const delay = el.dataset.delay ?? "0ms";
+            el.style.animationDelay = delay;
+            el.classList.add("reveal-visible");
+            el.classList.remove("reveal-hidden");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    const els = document.querySelectorAll(".reveal-on-scroll");
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -126,8 +150,8 @@ export default function HomePage() {
             {STATS.map((stat, i) => (
               <div
                 key={stat.value}
-                className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm stat-pop animate-fadeInScale"
-                style={{ animationDelay: `${120 + i * 90}ms` }}
+                data-delay={`${120 + i * 90}ms`}
+                className="reveal-on-scroll reveal-hidden flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm stat-pop"
               >
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#DDEB9D] text-3xl">
                   {stat.emoji}
@@ -158,8 +182,8 @@ export default function HomePage() {
               <Link
                 key={card.path}
                 to={card.path}
-                className={`group rounded-2xl bg-gradient-to-br ${card.gradient} p-6 shadow-md border border-white/50 hover:-translate-y-1 transition-transform duration-200 block card-glow animate-fadeInScale`}
-                style={{ animationDelay: `${80 + i * 110}ms` }}
+                data-delay={`${80 + i * 110}ms`}
+                className={`reveal-on-scroll reveal-hidden group rounded-2xl bg-gradient-to-br ${card.gradient} p-6 shadow-md border border-white/50 hover:-translate-y-1 transition-transform duration-200 block card-glow`}
               >
                 <p className="text-4xl mb-4" aria-hidden="true">{card.icon}</p>
                 <h3 className="text-lg font-bold text-[#143D60] mb-2 group-hover:text-[#27667B] transition-colors">
