@@ -42,6 +42,18 @@ export default function GiveawayMarketplacePage() {
   const [errors, setErrors] = useState<Partial<FormState>>({});
   const [successMsg, setSuccessMsg] = useState(false);
   const [requestedItem, setRequestedItem] = useState<string | null>(null);
+  // Contact / chat demo state
+  const [contactOpen, setContactOpen] = useState(false);
+  const [contactFor, setContactFor] = useState<{
+    itemId: string;
+    name: string;
+    email: string;
+    phone: string;
+    role: "donor" | "requester";
+  } | null>(null);
+  type Message = { from: "me" | "them"; text: string; time: string };
+  const [threads, setThreads] = useState<Record<string, Message[]>>({});
+  const [msgInput, setMsgInput] = useState("");
 
   const allCategories = useMemo(
     () => ["All", ...Array.from(new Set(items.map((i) => i.category))).sort()],
@@ -68,9 +80,34 @@ export default function GiveawayMarketplacePage() {
     setRequestedIds((prev) => new Set([...prev, id]));
     if (item) {
       setRequestedItem(item.itemName);
-      setTimeout(() => setRequestedItem(null), 3500);
     }
   };
+
+  function openContact(itemId: string, person: { itemId: string; name: string; email: string; phone: string; role: "donor" | "requester" }) {
+    setContactFor(person);
+    setContactOpen(true);
+    // seed a demo thread if missing
+    setThreads((t) => {
+      if (t[itemId]) return t;
+      const seed: Message[] = [
+        { from: "them", text: `Hi — I'm ${person.name}. Happy to coordinate pickup for this item.`, time: "Just now" },
+      ];
+      return { ...t, [itemId]: seed };
+    });
+  }
+
+  function sendMessage() {
+    if (!contactFor || !msgInput.trim()) return;
+    const itemId = contactFor.itemId;
+    const text = msgInput.trim();
+    const now = new Date().toLocaleTimeString();
+    setThreads((t) => ({ ...t, [itemId]: [...(t[itemId] || []), { from: "me", text, time: now }] }));
+    setMsgInput("");
+    // demo auto-reply
+    setTimeout(() => {
+      setThreads((t) => ({ ...t, [itemId]: [...(t[itemId] || []), { from: "them", text: "Thanks — I'll confirm a pickup time shortly.", time: new Date().toLocaleTimeString() }] }));
+    }, 800);
+  }
 
   const validate = (): boolean => {
     const e: Partial<FormState> = {};
@@ -102,7 +139,6 @@ export default function GiveawayMarketplacePage() {
     setErrors({});
     setShowForm(false);
     setSuccessMsg(true);
-    setTimeout(() => setSuccessMsg(false), 4000);
   };
 
   const field = (label: string, name: keyof FormState, element: React.ReactNode) => (
@@ -182,7 +218,8 @@ export default function GiveawayMarketplacePage() {
         <div role="status" className="mx-auto max-w-6xl px-4 mt-4">
           <div className="flex items-center gap-3 bg-[#A0C878]/20 border border-[#A0C878] text-[#143D60] rounded-xl px-4 py-3 text-sm font-medium">
             <span aria-hidden="true">✅</span>
-            Your item has been listed! View it in <button onClick={() => { setTabView("activity"); setActivityTab("donated"); }} className="underline font-semibold">My Activity</button>.
+            <div className="flex-1">Your item has been listed — thanks for contributing! View it in <button onClick={() => { setTabView("activity"); setActivityTab("donated"); }} className="underline font-semibold">My Activity</button>.</div>
+            <button aria-label="Dismiss" onClick={() => setSuccessMsg(false)} className="text-gray-500 hover:text-gray-700 ml-3">×</button>
           </div>
         </div>
       )}
@@ -250,6 +287,32 @@ export default function GiveawayMarketplacePage() {
             <p className="text-[#27667B] font-semibold text-base mb-5 leading-snug">{requestedItem}</p>
             <p className="text-xs text-gray-400 mb-6">The donor will be notified. Please collect the item at the agreed location.</p>
             <button onClick={() => setRequestedItem(null)} className="w-full rounded-xl bg-[#27667B] text-white py-2.5 font-medium hover:bg-[#1e5265] transition-colors">Done</button>
+          </div>
+        </div>
+      )}
+
+      {/* Contact / Chat Modal (demo) */}
+      {contactOpen && contactFor && (
+        <div className="fixed inset-0 z-60 flex items-center justify-center px-4 bg-black/40" role="dialog" aria-modal="true" aria-label="Contact">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md my-auto overflow-hidden">
+            <div className="flex items-center justify-between px-5 py-3 border-b border-gray-100">
+              <div>
+                <div className="text-sm font-semibold text-[#143D60]">Contact: {contactFor.name}</div>
+                <div className="text-xs text-gray-500">{contactFor.email} · {contactFor.phone}</div>
+              </div>
+              <button onClick={() => setContactOpen(false)} className="text-gray-400 hover:text-gray-600 text-xl">×</button>
+            </div>
+            <div className="px-4 py-3 max-h-80 overflow-y-auto space-y-3 bg-gray-50">
+              {(threads[contactFor.itemId] || []).map((m, i) => (
+                <div key={i} className={`flex ${m.from === "me" ? "justify-end" : "justify-start"}`}>
+                  <div className={`${m.from === "me" ? "bg-[#27667B] text-white" : "bg-white text-gray-800"} rounded-lg px-3 py-2 shadow-sm max-w-[80%]`}>{m.text}<div className="text-[10px] opacity-60 mt-1 text-right">{m.time}</div></div>
+                </div>
+              ))}
+            </div>
+            <div className="px-4 py-3 border-t border-gray-100 bg-white flex gap-2">
+              <input value={msgInput} onChange={(e) => setMsgInput(e.target.value)} placeholder="Write a message..." className="flex-1 rounded-lg border px-3 py-2 text-sm outline-none" />
+              <button onClick={sendMessage} className="rounded-lg bg-[#143D60] text-white px-4 py-2 text-sm">Send</button>
+            </div>
           </div>
         </div>
       )}
@@ -356,7 +419,29 @@ export default function GiveawayMarketplacePage() {
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {donatedItems.map((item) => <ItemCard key={item.id} item={item} showRequestBtn={false} />)}
+                {donatedItems.map((item) => (
+                  <div key={item.id}>
+                    <ItemCard item={item} showRequestBtn={false} />
+                    {/* If someone requested this item, show demo requester(s) and contact button */}
+                    {Array.from(requestedIds).includes(item.id) && (
+                      <div className="mt-3 px-4">
+                        <div className="text-sm text-gray-600 mb-2">Requests for this item</div>
+                        {/* Dummy requester list (one or two entries) */}
+                        {[{ name: "Alex Lim", email: "alex.lim@example.edu", phone: "555-0110" }, { name: "Maya Chen", email: "maya.chen@example.edu", phone: "555-0123" }].map((r, idx) => (
+                          <div key={idx} className="flex items-center justify-between gap-3 mb-2 bg-white border rounded-lg px-3 py-2">
+                            <div>
+                              <div className="text-sm font-medium text-gray-700">{r.name}</div>
+                              <div className="text-xs text-gray-500">{r.email}</div>
+                            </div>
+                            <div className="flex gap-2">
+                              <button onClick={() => openContact(item.id, { itemId: item.id, name: r.name, email: r.email, phone: r.phone, role: "requester" })} className="rounded-lg bg-[#27667B] text-white px-3 py-1 text-sm">Contact</button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             )
           )}
@@ -372,7 +457,26 @@ export default function GiveawayMarketplacePage() {
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {requestedItems.map((item) => <ItemCard key={item.id} item={item} showRequestBtn={false} />)}
+                {requestedItems.map((item) => (
+                  <div key={item.id}>
+                    <ItemCard item={item} showRequestBtn={false} />
+                    <div className="mt-3 px-4">
+                      <div className="flex items-center justify-end gap-2">
+                        <button
+                          onClick={() => {
+                            const donor = item.donorName || "Donor";
+                            const email = `${donor.toLowerCase().replace(/\s+/g, "")}@example.edu`;
+                            const phone = "555-0102";
+                            openContact(item.id, { itemId: item.id, name: donor, email, phone, role: "donor" });
+                          }}
+                          className="rounded-lg bg-[#27667B] text-white px-3 py-1 text-sm"
+                        >
+                          Chat with donor
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             )
           )}

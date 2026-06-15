@@ -10,7 +10,7 @@ export const campaignPosts: CampaignPost[] = [
     hashtags: ["#ReLoop", "#RecycleRight", "#SDG12", "#ZeroWaste"],
     likes: 142,
     shares: 38,
-    postedAt: "2024-11-18",
+    postedAt: "2026-06-15",
   },
   {
     id: "cp-002",
@@ -21,7 +21,7 @@ export const campaignPosts: CampaignPost[] = [
     hashtags: ["#Reuse", "#DormLife", "#DIY", "#ReLoop"],
     likes: 97,
     shares: 22,
-    postedAt: "2024-11-16",
+    postedAt: "2026-06-15",
   },
   {
     id: "cp-003",
@@ -32,7 +32,7 @@ export const campaignPosts: CampaignPost[] = [
     hashtags: ["#SecondHand", "#SlowFashion", "#SDG12", "#Reuse", "#ReLoop"],
     likes: 213,
     shares: 67,
-    postedAt: "2024-11-14",
+    postedAt: "2026-06-15",
   },
   {
     id: "cp-004",
@@ -43,7 +43,7 @@ export const campaignPosts: CampaignPost[] = [
     hashtags: ["#Giveaway", "#Textbooks", "#ReLoop", "#ZeroWaste"],
     likes: 78,
     shares: 14,
-    postedAt: "2024-11-12",
+    postedAt: "2026-06-15",
   },
   {
     id: "cp-005",
@@ -54,7 +54,7 @@ export const campaignPosts: CampaignPost[] = [
     hashtags: ["#FoodWaste", "#Compost", "#SDG12_5", "#ReLoop", "#CampusGreen"],
     likes: 184,
     shares: 51,
-    postedAt: "2024-11-10",
+    postedAt: "2026-06-15",
   },
   {
     id: "cp-006",
@@ -65,7 +65,7 @@ export const campaignPosts: CampaignPost[] = [
     hashtags: ["#PlasticFree", "#Reduce", "#ReLoop", "#StudentLife"],
     likes: 115,
     shares: 29,
-    postedAt: "2024-11-08",
+    postedAt: "2026-06-15",
   },
   {
     id: "cp-007",
@@ -76,6 +76,6 @@ export const campaignPosts: CampaignPost[] = [
     hashtags: ["#EWaste", "#Recycle", "#SDG12", "#ReLoop", "#TechForGood"],
     likes: 169,
     shares: 44,
-    postedAt: "2024-11-06",
+    postedAt: "2026-06-15",
   },
 ];

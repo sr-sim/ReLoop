@@ -9,7 +9,7 @@ export const inspirationPosts: InspirationPost[] = [
     author: "Aisha Rahman",
     imageEmoji: "🪴",
     tags: ["DIY", "Plants", "Dorm Life"],
-    createdAt: "2024-11-15",
+    createdAt: "2026-06-15",
   },
   {
     id: "ip-002",
@@ -19,7 +19,7 @@ export const inspirationPosts: InspirationPost[] = [
     author: "Jordan Lee",
     imageEmoji: "🎁",
     tags: ["Crafts", "Gifts", "Zero Waste"],
-    createdAt: "2024-11-10",
+    createdAt: "2026-06-15",
   },
   {
     id: "ip-003",
@@ -29,7 +29,7 @@ export const inspirationPosts: InspirationPost[] = [
     author: "Sofia Mendes",
     imageEmoji: "👖",
     tags: ["Upcycle", "DIY", "Organisation"],
-    createdAt: "2024-11-08",
+    createdAt: "2026-06-15",
   },
   {
     id: "ip-004",
@@ -39,7 +39,7 @@ export const inspirationPosts: InspirationPost[] = [
     author: "Wei Xiang",
     imageEmoji: "♻️",
     tags: ["Plastic-Free", "Habit", "Sustainability"],
-    createdAt: "2024-11-18",
+    createdAt: "2026-06-15",
   },
   {
     id: "ip-005",
@@ -49,7 +49,7 @@ export const inspirationPosts: InspirationPost[] = [
     author: "Priya Nair",
     imageEmoji: "🥗",
     tags: ["Diet", "Carbon Footprint", "SDG12"],
-    createdAt: "2024-11-12",
+    createdAt: "2026-06-15",
   },
   {
     id: "ip-006",
@@ -59,7 +59,7 @@ export const inspirationPosts: InspirationPost[] = [
     author: "Marcus Tan",
     imageEmoji: "🖨️",
     tags: ["Paper", "Printing", "Campus Hack"],
-    createdAt: "2024-11-05",
+    createdAt: "2026-06-15",
   },
   {
     id: "ip-007",
@@ -69,7 +69,7 @@ export const inspirationPosts: InspirationPost[] = [
     author: "Elena Kowalski",
     imageEmoji: "🗑️",
     tags: ["Sorting", "Habits", "Waste Reduction"],
-    createdAt: "2024-11-20",
+    createdAt: "2026-06-15",
   },
   {
     id: "ip-008",
@@ -79,7 +79,7 @@ export const inspirationPosts: InspirationPost[] = [
     author: "Kwame Asante",
     imageEmoji: "📱",
     tags: ["E-Waste", "Electronics", "Campus"],
-    createdAt: "2024-11-16",
+    createdAt: "2026-06-15",
   },
   {
     id: "ip-009",
@@ -89,7 +89,7 @@ export const inspirationPosts: InspirationPost[] = [
     author: "Nina Petrov",
     imageEmoji: "🍌",
     tags: ["Compost", "Organic", "Food Waste"],
-    createdAt: "2024-11-09",
+    createdAt: "2026-06-15",
   },
   {
     id: "ip-010",
@@ -99,7 +99,7 @@ export const inspirationPosts: InspirationPost[] = [
     author: "Liam O'Brien",
     imageEmoji: "📓",
     tags: ["Stationery", "Savings", "Zero Waste"],
-    createdAt: "2024-11-03",
+    createdAt: "2026-06-15",
   },
   {
     id: "ip-011",
@@ -109,7 +109,7 @@ export const inspirationPosts: InspirationPost[] = [
     author: "Yuki Tanaka",
     imageEmoji: "💻",
     tags: ["Digital", "Paperless", "Study"],
-    createdAt: "2024-10-28",
+    createdAt: "2026-06-15",
   },
   {
     id: "ip-012",
@@ -119,6 +119,6 @@ export const inspirationPosts: InspirationPost[] = [
     author: "Fatima Al-Amin",
     imageEmoji: "🍾",
     tags: ["Glass", "Campus", "Circular Economy"],
-    createdAt: "2024-10-25",
+    createdAt: "2026-06-15",
   },
 ];

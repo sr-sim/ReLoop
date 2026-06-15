@@ -46,7 +46,7 @@ export default function RecyclingGuidePage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <section className="bg-gradient-to-br from-[#143D60] to-[#27667B] text-white py-14 px-4 text-center">
+      <section className="bg-gradient-to-br from-[#143D60] to-[#A0C878] text-white py-14 px-4 text-center">
         <p className="text-5xl mb-4" aria-hidden="true">♻️</p>
         <h1 className="text-3xl sm:text-4xl font-bold mb-3">Recycling Guide</h1>
         <p className="text-gray-200 max-w-xl mx-auto text-base">
