@@ -103,29 +103,29 @@ export default function HomePage() {
               src="/whatsapp-icon.jpeg"
               alt="WhatsApp icon"
               className="mx-auto mb-6 h-20 w-20 rounded-full border border-white/30 bg-white animate-floaty"
-              style={{ animationDelay: '120ms' }}
+              style={{ animationDelay: '200ms' }}
             />
-            <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight animate-slideUpFade`} style={{ animationDelay: '220ms' }}>
+            <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight animate-slideUpFade`} style={{ animationDelay: '400ms' }}>
               Reduce. Reuse. Recycle.
               <br />
               <span className="text-[#DDEB9D]">Start on Campus.</span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed animate-slideUpFade" style={{ animationDelay: '320ms' }}>
+            <p className="text-lg sm:text-xl text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed animate-slideUpFade" style={{ animationDelay: '600ms' }}>
               ReLoop empowers university students to embrace sustainable habits aligned with
               UN SDG 12.5 — one small action at a time.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 to="/giveaway"
-                className="rounded-xl bg-[#A0C878] text-[#143D60] px-8 py-3.5 font-semibold text-base hover:bg-[#8fb566] transition-colors shadow-lg animate-fadeInScale"
-                style={{ animationDelay: '420ms' }}
+                className="rounded-xl bg-[#A0C878] text-[#143D60] px-8 py-3.5 font-semibold text-base hover:bg-[#8fb566] transition-colors shadow-lg animate-fadeInScale btn-cta hover:shadow-xl"
+                style={{ animationDelay: '800ms' }}
               >
                 🎁 Browse Giveaways
               </Link>
               <Link
                 to="/recycling"
-                className="rounded-xl bg-transparent border-2 border-[#DDEB9D] text-[#DDEB9D] px-8 py-3.5 font-semibold text-base hover:bg-[#DDEB9D]/10 transition-colors shadow-lg animate-fadeInScale"
-                style={{ animationDelay: '520ms' }}
+                className="rounded-xl bg-transparent border-2 border-[#DDEB9D] text-[#DDEB9D] px-8 py-3.5 font-semibold text-base hover:bg-[#DDEB9D]/10 transition-colors shadow-lg animate-fadeInScale btn-cta"
+                style={{ animationDelay: '800ms' }}
               >
                 ♻️ Recycling Guide
               </Link>

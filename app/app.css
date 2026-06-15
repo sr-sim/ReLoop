@@ -42,8 +42,8 @@ body {
 }
 
 /* Utility animation classes */
-.animate-slideUpFade { animation: slideUpFade 520ms cubic-bezier(.2,.9,.2,1) both; }
-.animate-fadeInScale { animation: fadeInScale 420ms cubic-bezier(.2,.9,.2,1) both; }
+.animate-slideUpFade { animation: slideUpFade 850ms cubic-bezier(.2,.9,.2,1) both; }
+.animate-fadeInScale { animation: fadeInScale 900ms cubic-bezier(.2,.9,.2,1) both; }
 .animate-floaty { animation: floaty 6s ease-in-out infinite; }
 .bg-gradient-animated {
   background: linear-gradient(120deg,var(--color-dark-blue),var(--color-deep-blue),var(--color-primary-green));
