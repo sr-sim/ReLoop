@@ -22,3 +22,54 @@ body {
   from { opacity: 0; transform: scale(0.92); }
   to   { opacity: 1; transform: scale(1); }
 }
+
+/* Entrance + subtle motion */
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floaty {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Utility animation classes */
+.animate-slideUpFade { animation: slideUpFade 520ms cubic-bezier(.2,.9,.2,1) both; }
+.animate-fadeInScale { animation: fadeInScale 420ms cubic-bezier(.2,.9,.2,1) both; }
+.animate-floaty { animation: floaty 6s ease-in-out infinite; }
+.bg-gradient-animated {
+  background: linear-gradient(120deg,var(--color-dark-blue),var(--color-deep-blue),var(--color-primary-green));
+  background-size: 300% 300%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Decorative blobs */
+.hero-blob {
+  position: absolute;
+  filter: blur(28px) saturate(120%);
+  opacity: 0.55;
+  transform-origin: center;
+}
+.hero-blob--left { left: -6rem; top: -6rem; width: 22rem; height: 22rem; border-radius: 50%; background: rgba(221,235,157,0.14); }
+.hero-blob--right { right: -6rem; top: -4rem; width: 18rem; height: 18rem; border-radius: 50%; background: rgba(160,200,120,0.12); }
+
+/* Card subtle hover glow */
+.card-glow { transition: box-shadow .25s, transform .2s; }
+.card-glow:hover { box-shadow: 0 10px 30px rgba(38,102,124,0.12); transform: translateY(-6px); }
+
+/* Stats tile pop */
+.stat-pop { transform-origin: left center; transition: transform .32s ease, box-shadow .32s ease; }
+.stat-pop:hover { transform: scale(1.02); box-shadow: 0 8px 18px rgba(16,66,76,0.06); }
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-slideUpFade, .animate-fadeInScale, .animate-floaty, .bg-gradient-animated { animation: none !important; }
+}

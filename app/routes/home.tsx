@@ -68,37 +68,40 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#143D60] via-[#27667B] to-[#143D60] text-white py-24 px-4">
-        <div className="mx-auto max-w-4xl text-center">
-          <div
-            className={`transition-all duration-500 ${
-              visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
-          >
+      <section className="relative overflow-hidden bg-gradient-animated text-white py-24 px-4">
+        {/* Decorative blobs */}
+        <div className="hero-blob hero-blob--left animate-floaty" aria-hidden="true" />
+        <div className="hero-blob hero-blob--right animate-floaty" aria-hidden="true" style={{ animationDelay: '1s' }} />
+
+        <div className="mx-auto max-w-4xl text-center relative z-10">
+          <div>
             <img
               src="/whatsapp-icon.jpeg"
               alt="WhatsApp icon"
-              className="mx-auto mb-6 h-20 w-20 rounded-full border border-white/30 bg-white"
+              className="mx-auto mb-6 h-20 w-20 rounded-full border border-white/30 bg-white animate-floaty"
+              style={{ animationDelay: '120ms' }}
             />
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight animate-slideUpFade`} style={{ animationDelay: '220ms' }}>
               Reduce. Reuse. Recycle.
               <br />
               <span className="text-[#DDEB9D]">Start on Campus.</span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed animate-slideUpFade" style={{ animationDelay: '320ms' }}>
               ReLoop empowers university students to embrace sustainable habits aligned with
               UN SDG 12.5 — one small action at a time.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 to="/giveaway"
-                className="rounded-xl bg-[#A0C878] text-[#143D60] px-8 py-3.5 font-semibold text-base hover:bg-[#8fb566] transition-colors shadow-lg"
+                className="rounded-xl bg-[#A0C878] text-[#143D60] px-8 py-3.5 font-semibold text-base hover:bg-[#8fb566] transition-colors shadow-lg animate-fadeInScale"
+                style={{ animationDelay: '420ms' }}
               >
                 🎁 Browse Giveaways
               </Link>
               <Link
                 to="/recycling"
-                className="rounded-xl bg-transparent border-2 border-[#DDEB9D] text-[#DDEB9D] px-8 py-3.5 font-semibold text-base hover:bg-[#DDEB9D]/10 transition-colors shadow-lg"
+                className="rounded-xl bg-transparent border-2 border-[#DDEB9D] text-[#DDEB9D] px-8 py-3.5 font-semibold text-base hover:bg-[#DDEB9D]/10 transition-colors shadow-lg animate-fadeInScale"
+                style={{ animationDelay: '520ms' }}
               >
                 ♻️ Recycling Guide
               </Link>
@@ -120,10 +123,11 @@ export default function HomePage() {
             </p>
           </div>
           <div className="space-y-4 max-w-3xl mx-auto">
-            {STATS.map((stat) => (
+            {STATS.map((stat, i) => (
               <div
                 key={stat.value}
-                className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm"
+                className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm stat-pop animate-fadeInScale"
+                style={{ animationDelay: `${120 + i * 90}ms` }}
               >
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#DDEB9D] text-3xl">
                   {stat.emoji}
@@ -150,11 +154,12 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {NAV_CARDS.map((card) => (
+            {NAV_CARDS.map((card, i) => (
               <Link
                 key={card.path}
                 to={card.path}
-                className={`group rounded-2xl bg-gradient-to-br ${card.gradient} p-6 shadow-md border border-white/50 hover:-translate-y-1 transition-transform duration-200 block`}
+                className={`group rounded-2xl bg-gradient-to-br ${card.gradient} p-6 shadow-md border border-white/50 hover:-translate-y-1 transition-transform duration-200 block card-glow animate-fadeInScale`}
+                style={{ animationDelay: `${80 + i * 110}ms` }}
               >
                 <p className="text-4xl mb-4" aria-hidden="true">{card.icon}</p>
                 <h3 className="text-lg font-bold text-[#143D60] mb-2 group-hover:text-[#27667B] transition-colors">
